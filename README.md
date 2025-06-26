@@ -1,10 +1,15 @@
 # Документация для аналога TikTok
 
 # 1. Диаграммы
+<details>
+  <summary>Создание таблицы</summary>
 - Диаграмма классов
   ![UML диаграмма классов](./diagrams/tiktok-class-diagram.png)
+
 - Sequence диаграмма
   ![Sequence диаграмма "Загрузка видео пользователем"](./diagrams/sequence-diagram.png)
+</details>
+
 # 2. SQL Queries - запросы для работы с БД
 <details>
   <summary>Создание таблицы</summary>
