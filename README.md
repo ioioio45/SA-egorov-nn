@@ -74,6 +74,7 @@ CREATE TABLE UserActivityLog (
     FOREIGN KEY (video_id) REFERENCES Video(video_id)
         ON DELETE CASCADE
 );
+```
 </details>
 
 ## ALTER TABLE
