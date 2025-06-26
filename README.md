@@ -6,11 +6,11 @@
 <details>
   <summary>Диаграммы (нажмите, чтобы вскрыть)</summary>
 
-- Диаграмма классов
+- Диаграмма классов (diagrams.net)
 
   ![UML диаграмма классов](./diagrams/tiktok-class-diagram.png)
 
-- Sequence диаграмма
+- Sequence диаграмма (plantUML)
 
   ![Sequence диаграмма "Загрузка видео пользователем"](./diagrams/sequence-diagram.png)
 
