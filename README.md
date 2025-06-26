@@ -1,9 +1,9 @@
 # Документация для аналога TikTok
 
 # 1. Диаграммы
-- Class Diagram
+- Диаграмма классов
   ![UML диаграмма классов](./diagrams/tiktok-class-diagram.png)
-
+  ![Sequence диаграмма "Загрузка видео пользователем"](./diagrams/sequence-diagram.png)
 # 2. SQL Queries - запросы для работы с БД
 <details>
   <summary>Создание таблицы</summary>
@@ -22,7 +22,7 @@ CREATE TABLE Video (
     video_id SERIAL PRIMARY KEY,
     author_id INTEGER NOT NULL,
     video_title VARCHAR(255),
-    video_file_link TEXT,
+    video_file_link VARCHAR(255),
     FOREIGN KEY (author_id) REFERENCES User(user_id)
         ON DELETE CASCADE
 );
@@ -54,7 +54,7 @@ CREATE TABLE Comment (
     comment_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     video_id INTEGER NOT NULL,
-    comment_body TEXT,
+    comment_body VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES User(user_id)
         ON DELETE CASCADE,
     FOREIGN KEY (video_id) REFERENCES Video(video_id)
@@ -66,7 +66,6 @@ CREATE TABLE UserActivityLog (
     activity_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     video_id INTEGER NOT NULL,
-    abstract_video_data TEXT,
     FOREIGN KEY (user_id) REFERENCES User(user_id)
         ON DELETE CASCADE,
     FOREIGN KEY (video_id) REFERENCES Video(video_id)
