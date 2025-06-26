@@ -77,7 +77,8 @@ CREATE TABLE UserActivityLog (
 
 <details>
   <summary>Примеры с работой с данными</summary>
-* Получить таблицу всех пользователей с количеством опубликованных видео и отсортировать.
+
+  - Получить таблицу всех пользователей с количеством опубликованных видео и отсортировать.
 
   ```sql
   SELECT user_id, user_name, COUNT(Video.video_id) as videos_count
@@ -85,10 +86,20 @@ CREATE TABLE UserActivityLog (
   GROUP BY User.user_id, User.user_name
   ORDER BY videos_count DESC;
   ```
+
+  - Список пользователей, которые подписаны на пользователя с id 322.
+
+  ```sql
+  SELECT user_id, user_name
+  FROM User JOIN Follow ON User.user_id = Follow.follower_id
+  WHERE following_id = 322;
+  ```
+
+  - Список пользователей, на которых подписан на пользователь с id 322.
+
+  ```sql
+  SELECT user_id, user_name
+  FROM User JOIN Follow ON User.user_id = Follow.following_id
+  WHERE followier_id = 322;
+  ```
 </details>
-## ALTER TABLE
-  
-## Примеры решения задач
-  - './SQL/sql-examples.sql'
-# 3. Документация
-./
