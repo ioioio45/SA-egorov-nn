@@ -12,7 +12,7 @@
 -- Таблица пользователей
 CREATE TABLE User (
     user_id SERIAL PRIMARY KEY,
-    user_name VARCHAR(100) NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL
 );
@@ -21,13 +21,13 @@ CREATE TABLE User (
 CREATE TABLE Video (
     video_id SERIAL PRIMARY KEY,
     author_id INTEGER NOT NULL,
-    video_title VARCHAR(200),
+    video_title VARCHAR(255),
     video_file_link TEXT,
     FOREIGN KEY (author_id) REFERENCES User(user_id)
         ON DELETE CASCADE
 );
 
--- Таблица подписок (связь многие-ко-многим между User и User)
+-- Таблица с подписками
 CREATE TABLE Follow (
     follower_id INTEGER NOT NULL,
     following_id INTEGER NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE Comment (
         ON DELETE CASCADE
 );
 
--- Таблица истории активности пользователя (просмотры и т.п.)
+-- Таблица активности пользователя
 CREATE TABLE UserActivityLog (
     activity_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
@@ -74,6 +74,8 @@ CREATE TABLE UserActivityLog (
 );
 ```
 </details>
+
+## Аналитические SQL-запросы
 
 <details>
   <summary>Примеры с работой с данными</summary>
@@ -100,6 +102,6 @@ CREATE TABLE UserActivityLog (
   ```sql
   SELECT user_id, user_name
   FROM User JOIN Follow ON User.user_id = Follow.following_id
-  WHERE followier_id = 322;
+  WHERE follower_id = 322;
   ```
 </details>
