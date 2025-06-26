@@ -1,14 +1,12 @@
 # Документация для аналога TikTok
-## «UML-модель для аналога TikTok. Диаграмма классов описывает основные сущности системы: пользователей, видео, лайки, комментарии и активность.
 
 # 1. Диаграммы
 - Class Diagram
   ![UML диаграмма классов](./diagrams/tiktok-class-diagram.png)
 
 # 2. SQL Queries - запросы для работы с БД
-## CREATE TABLE
 <details>
-  <summary>SQL</summary>
+  <summary>Создание таблицы</summary>
 
 ```sql
 -- Таблица пользователей
@@ -41,7 +39,7 @@ CREATE TABLE Follow (
 );
 
 -- Таблица лайков видео
-CREATE TABLE "Like" (
+CREATE TABLE Like (
     like_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     video_id INTEGER NOT NULL,
@@ -77,35 +75,19 @@ CREATE TABLE UserActivityLog (
 ```
 </details>
 
+<details>
+  <summary>Примеры с работой с данными</summary>
+* Получить таблицу всех пользователей с количеством опубликованных видео и отсортировать.
+
+  ```sql
+  SELECT user_id, user_name, COUNT(Video.video_id) as videos_count
+  FROM User LEFT JOIN Video ON User.user_id = Video.author_id
+  GROUP BY User.user_id, User.user_name
+  ORDER BY videos_count DESC;
+  ```
+</details>
 ## ALTER TABLE
-  ```SQL
-  ALTER TABLE table_name
-  { ADD column_name datatype | DROP COLUMN column_name | ALTER COLUMN column_name datatype };
-  ```
-
-  - Примеры
-  ```SQL
-  ALTER TABLE users
-  ADD phone VARCHAR(10);
-  ```
-
-  ```SQL
-  ALTER TABLE users
-  DROP COLUMN address;
-  ```
-
-  ```SQL
-  ALTER TABLE users
-  ALTER COLUMN money INT NOT NULL;
-  ```
-## DROP TABLE
-  ```SQL
-  DROP TABLE users;
-  ```
-## TRUNCATE TABLE
-   ```SQL
-  TRUNCATE TABLE users;
-  ```
+  
 ## Примеры решения задач
   - './SQL/sql-examples.sql'
 # 3. Документация
