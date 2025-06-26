@@ -3,6 +3,7 @@
 # 1. Диаграммы
 - Диаграмма классов
   ![UML диаграмма классов](./diagrams/tiktok-class-diagram.png)
+- Sequence диаграмма
   ![Sequence диаграмма "Загрузка видео пользователем"](./diagrams/sequence-diagram.png)
 # 2. SQL Queries - запросы для работы с БД
 <details>
